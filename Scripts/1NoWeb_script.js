@@ -222,7 +222,7 @@ function getRandomNumber() {
         const formattedYear = currentDate.getFullYear().toString();
         const formattedDate = `${formattedDay}.${formattedMonth}.${formattedYear} `;
         // Обновляем содержимое элемента с идентификатором "current_date_time_block"
-        document.querySelector('#x').innerHTML = `${formattedDate} ${timerurl}`;
+        document.querySelector('#x').innerHTML = `${formattedDate} ${document.getElementById('current_date_time_block').innerHTML}`;
 
 
 
@@ -240,8 +240,10 @@ function getRandomNumber() {
         function updateTimer() {
             // Вычисляем разницу между текущей датой и начальной датой
             const b = new Date(Date.now())
-            const dfgdgfdf = document.getElementById("timeBus").value ? new Date(`${b.toLocaleDateString()} ${document.getElementById("timeBus").value}`) : ''
-
+            const date = new Date(Date.UTC(b.getFullYear(), b.getMonth(), b.getDate()))
+            const result = date.toISOString().split('T')[0]
+            const dfgdgfdf = document.getElementById("timeBus").value ? new Date(`${result}T${document.getElementById("timeBus").value}`) : ''
+            
             var diff = new Date() - (dfgdgfdf || startDate);
             
             // Преобразуем разницу в формат "чч:мм:сс"
