@@ -7,23 +7,17 @@
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-        var cTimeBus, cPassBus, cNumBus, cMarshBus
+        
         // When the user clicks on the button, open the modal
         btn.onclick = function() {
             modal.style.display = "block";
         }
-        timeBus.oninput = function() {
-            cTimeBus = timeBus.value;
-        };
-        passBus.oninput = function() {
-            cPassBus = passBus.value;
-        };
-        marshBus.oninput = function() {
-            cMarshBus = marshBus.value;
-        };
-        numBus.oninput = function() {
-            cNumBus = numBus.value;
-        };
+        
+        var cTimeBus, cPassBus, cNumBus, cMarshBus
+        var changeCTimeBus = ()=>{
+            cTimeBus = document.getElementById("timeBus").value;
+        }
+        
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
             modal.style.display = "none";
@@ -149,7 +143,44 @@ function getRandomNumber() {
         const url = document.getElementById("numBus").value || variables[0];
         const UstUrl = variables[1];
         const emailurl = 'sash12.polikanov';
-        const timerurl = document.getElementById("timeBus").value || `${date.getHours()}:${(date.getMinutes()<10?'0':'') + date.getMinutes()}:${(date.getSeconds()<10?'0':'') + date.getSeconds()}`
+       
+        document.getElementById("timeBus").addEventListener('input', function(){
+            let inputNumber = this.value
+            console.log('your variable value is: ' + inputNumber)
+            cTimeBus = inputNumber
+            document.getElementById('current_date_time_block').innerHTML = inputNumber
+        })
+
+        document.getElementById("numBus").addEventListener('input', function(){
+            let inputNumber = this.value
+            console.log('your variable value is: ' + inputNumber)
+            cTimeBus = inputNumber
+            document.getElementById('result').innerHTML = inputNumber
+            document.getElementById('result2').innerHTML = inputNumber
+        })
+
+        document.getElementById("marshBus").addEventListener('input', function(){
+            let inputNumber = this.value
+            console.log('your variable value is: ' + inputNumber)
+            cTimeBus = inputNumber
+            document.getElementById('marshrutt').innerHTML = inputNumber
+        })
+
+        document.getElementById("passBus").addEventListener('input', function(){
+            let inputNumber = this.value
+            console.log('your variable value is: ' + inputNumber)
+            cTimeBus = inputNumber
+            document.getElementById('passen').innerHTML = inputNumber
+        })
+
+        document.getElementById("selectMarsh4and59andoth").addEventListener('input', function(){
+            let inputNumber = this.value
+            console.log('your variable value is: ' + inputNumber)
+            cTimeBus = inputNumber
+            document.getElementById('marshrutttttt').innerHTML = inputNumber
+        })
+        
+        const timerurl = cTimeBus || `${date.getHours()}:${(date.getMinutes()<10?'0':'') + date.getMinutes()}:${(date.getSeconds()<10?'0':'') + date.getSeconds()}`
         const passenUrl = document.getElementById("passBus").value || variables[4];
         let unixurl = Date.now();
         
