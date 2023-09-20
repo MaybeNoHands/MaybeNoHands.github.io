@@ -542,10 +542,16 @@ document.addEventListener("DOMContentLoaded", function () {
   function cloneControlElements() {
     var passenValue = parseInt(document.getElementById("passen").innerText);
     var controlDiv = document.getElementById("control");
-
+    
+    if (passenValue == 1) {
+        console.log(document.querySelectorAll(".cloned-control"))
+        document.querySelectorAll(".cloned-control").forEach(e => e.parentNode.removeChild(e));
+    }
+    
     if (!isNaN(passenValue) && passenValue >= 2) {
       // Удаляем уже существующие клонированные элементы
       var existingClones = document.querySelectorAll(".cloned-control");
+        
       for (let i = 0; i < existingClones.length; i++) {
         existingClones[i].remove();
       }
